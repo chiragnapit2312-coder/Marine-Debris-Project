@@ -17,3 +17,28 @@ Thumbs.db
 
 # VS Code settings (optional, agar personal settings hide karni ho)
 .vscode/
+# Heavy Model Weights
+*.pt
+*.onnx
+*.bin
+model/weights/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# System & IDE settings
+.DS_Store
+.vscode/
+# Local Database files
+*.db
+*.mv.db
+backend (1)/backend/data/
+
+# Python compiled files
+__pycache__/
+*.pyc
+
+# OS & Editor settings
+.DS_Store
+.vscode/

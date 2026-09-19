@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepScan AI - Reports</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/reports.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-anchor"></i>
+                <span>DeepScan AI</span>
+            </div>
+            <div onclick="location.href='index.html'" class="nav-item"><i class="fa-solid fa-upload"></i> Upload</div>
+            <div onclick="location.href='dashboard.html'" class="nav-item"><i class="fa-solid fa-chart-simple"></i> Dashboard</div>
+            <div onclick="location.href='heatmap.html'" class="nav-item"><i class="fa-solid fa-map-location-dot"></i> Heatmap</div>
+            <div class="nav-item active"><i class="fa-solid fa-file-lines"></i> Reports</div>
+
+            <div class="dark-toggle">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeSwitch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="main-content">
+
+            <div class="top-bar">
+                <h2>All Scan Reports</h2>
+                <button id="downloadCsvBtn"><i class="fa-solid fa-download"></i> Download CSV</button>
+            </div>
+
+            <div class="card">
+                <table id="reportsTable">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Class</th>
+                            <th>Confidence</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportsBody">
+                        <tr><td colspan="7">Loading reports...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/toast.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>

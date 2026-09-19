@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepScan AI - Marine Debris Detection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-anchor"></i>
+            <span>DeepScan AI</span>
+        </div>
+        <label class="switch">
+            <input type="checkbox" id="darkModeSwitch">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="upload-container">
+        <h1>Underwater Debris Detection</h1>
+        <p>Upload a side-scan sonar image to detect marine debris</p>
+
+        <div class="upload-box" id="uploadBox">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <p>Click here to select one or more images</p>
+            <input type="file" id="fileInput" accept="image/*" hidden multiple>
+        </div>
+
+        <div id="previewGrid" class="preview-grid"></div>
+
+        <img id="previewImg" src="" alt="" style="display:none;">
+
+        <button id="scanBtn" disabled>Scan Image</button>
+
+        <div id="scanSpinner" class="spinner-wrap" style="display:none;">
+            <div class="spinner"></div>
+            <p>Analyzing sonar image...</p>
+        </div>
+    </div>
+
+    <div class="result-container" id="resultBox">
+        <h2>Detection Result</h2>
+        <div id="detectionList"></div>
+    </div>
+
+    <script src="js/toast.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
