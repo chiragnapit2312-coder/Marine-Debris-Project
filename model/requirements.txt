@@ -1,6 +1,8 @@
 torch
 torchvision
 ultralytics
-flask
+fastapi
+uvicorn
+python-multipart
 opencv-python-headless
 pillow
