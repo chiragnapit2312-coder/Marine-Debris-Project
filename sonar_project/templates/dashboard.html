@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepScan AI - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-anchor"></i>
+                <span>DeepScan AI</span>
+            </div>
+            <div onclick="location.href='index.html'" class="nav-item"><i class="fa-solid fa-upload"></i> Upload</div>
+            <div class="nav-item active"><i class="fa-solid fa-chart-simple"></i> Dashboard</div>
+            <div onclick="location.href='heatmap.html'" class="nav-item"><i class="fa-solid fa-map-location-dot"></i> Heatmap</div>
+            <div onclick="location.href='reports.html'" class="nav-item"><i class="fa-solid fa-file-lines"></i> Reports</div>
+
+            <div class="dark-toggle">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeSwitch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="main-content">
+
+            <div class="top-bar">
+                <h2>Scan Overview</h2>
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p>Debris Found (this scan)</p>
+                    <h3 class="danger" id="debrisFoundCount">--</h3>
+                </div>
+                <div class="stat-card">
+                    <p>Highest Confidence</p>
+                    <h3 id="highestConfidence">--</h3>
+                </div>
+                <div class="stat-card">
+                    <p>Avg Confidence (all scans)</p>
+                    <h3 class="success" id="avgConfidence">--</h3>
+                </div>
+            </div>
+
+            <div class="content-grid">
+
+                <div class="card">
+                    <h4>Scan Result <span id="imageCounter" style="font-weight:normal;font-size:12px;color:#888;"></span></h4>
+                    <div class="image-frame" id="imageFrame">
+                        <img id="scannedImage" src="" alt="Scanned sonar image">
+                        <div id="boxOverlay"></div>
+                    </div>
+                    <div class="image-nav">
+                        <button id="prevImageBtn" class="nav-btn"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                        <button id="nextImageBtn" class="nav-btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <p class="note">Boxes show detected debris with confidence score</p>
+                </div>
+
+                <div class="card heatmap-card">
+                    <h4>Debris Heatmap</h4>
+                    <div class="heatmap-box" id="heatmapBox"></div>
+                    <div class="heatmap-legend">
+                        <span><i class="legend-dot high"></i> High confidence</span>
+                        <span><i class="legend-dot medium"></i> Medium</span>
+                        <span><i class="legend-dot low"></i> Filtered</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-grid">
+
+                <div class="card">
+                    <h4>Detections</h4>
+                    <div id="detectionsContainer"></div>
+                </div>
+
+                <div class="card">
+                    <h4>Environmental Impact</h4>
+                    <p><i class="fa-solid fa-fish"></i> Ghost nets are known to entangle marine species including fish, turtles, and cetaceans</p>
+                    <p><i class="fa-solid fa-gauge"></i> Detection speed: <span id="detectionSpeed">--</span> per image</p>
+                </div>
+
+            </div>
+
+            <div class="export-buttons">
+                <button id="exportPdfBtn"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
+                <div class="share-wrap">
+                    <button id="shareBtn"><i class="fa-solid fa-share-nodes"></i> Share Report</button>
+                    <div id="shareMenu" class="share-menu" style="display:none;">
+                        <div class="share-option" id="shareEmail"><i class="fa-solid fa-envelope"></i> Email report</div>
+                        <div class="share-option" id="shareCopyText"><i class="fa-solid fa-copy"></i> Copy report text</div>
+                        <div class="share-option" id="shareCopyLink"><i class="fa-solid fa-link"></i> Copy shareable link</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

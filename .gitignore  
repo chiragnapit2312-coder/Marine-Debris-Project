@@ -1,0 +1,19 @@
+# Java / Spring Boot build files
+target/
+*.class
+.idea/
+*.iml
+
+# Database file (private test data, GitHub pe nahi jana chahiye)
+data/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional, agar personal settings hide karni ho)
+.vscode/

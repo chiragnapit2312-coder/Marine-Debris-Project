@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepScan AI - Heatmap</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .big-heatmap {
+            height: 500px;
+        }
+        .heat-dot.big {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout">
+
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-anchor"></i>
+                <span>DeepScan AI</span>
+            </div>
+            <div onclick="location.href='index.html'" class="nav-item"><i class="fa-solid fa-upload"></i> Upload</div>
+            <div onclick="location.href='dashboard.html'" class="nav-item"><i class="fa-solid fa-chart-simple"></i> Dashboard</div>
+            <div class="nav-item active"><i class="fa-solid fa-map-location-dot"></i> Heatmap</div>
+            <div onclick="location.href='reports.html'" class="nav-item"><i class="fa-solid fa-file-lines"></i> Reports</div>
+
+            <div class="dark-toggle">
+                <span><i class="fa-solid fa-moon"></i> Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeSwitch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="main-content">
+
+            <div class="top-bar">
+                <h2>All-Time Debris Heatmap</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p>Total Detections</p>
+                    <h3 id="totalDetections">--</h3>
+                </div>
+                <div class="stat-card">
+                    <p>Confirmed Hazards</p>
+                    <h3 class="danger" id="totalConfirmed">--</h3>
+                </div>
+                <div class="stat-card">
+                    <p>Most Common Class</p>
+                    <h3 id="topClass">--</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>Combined Detection Map (All Scans)</h4>
+                <div class="heatmap-box big-heatmap" id="bigHeatmapBox"></div>
+                <div class="heatmap-legend">
+                    <span><i class="legend-dot high"></i> High confidence</span>
+                    <span><i class="legend-dot medium"></i> Medium</span>
+                    <span><i class="legend-dot low"></i> Filtered</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/heatmap.js"></script>
+</body>
+</html>
