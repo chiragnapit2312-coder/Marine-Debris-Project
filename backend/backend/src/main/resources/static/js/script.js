@@ -51,9 +51,15 @@ function scanOneImage(file) {
         method: "POST",
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Backend returned status " + response.status);
+        }
+        return response.json();
+    })
     .catch(error => {
-        console.log("Backend not connected for this image, using dummy result");
+        console.log("Backend error for this image, using dummy result:", error.message);
+        showToast("Detection failed for this image - showing sample data", "error");
         return dummyData;
     });
 }
