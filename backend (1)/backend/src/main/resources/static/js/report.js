@@ -7,7 +7,7 @@ const container = document.getElementById("reportContent");
 if (!sharedTime) {
     container.innerHTML = "<p class='note' style='padding:20px;'>No report specified in this link.</p>";
 } else {
-    fetch("http://localhost:8080/reports")
+    fetch("/reports")
         .then(response => response.json())
         .then(allRecords => {
             const matched = allRecords.filter(r => r.processedAt === sharedTime);

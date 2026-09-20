@@ -47,7 +47,7 @@ function scanOneImage(file) {
     const formData = new FormData();
     formData.append("image", file);
 
-    return fetch("http://localhost:8080/detect", {
+    return fetch("/detect", {
         method: "POST",
         body: formData
     })

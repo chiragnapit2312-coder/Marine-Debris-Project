@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -29,7 +28,7 @@ public class DetectController {
     private ScanResultRepository scanResultRepository;
 
     // Dost ka Python AI model service (FastAPI) yahan chal raha hai
-    private final String PYTHON_MODEL_URL = "http://localhost:8000/detect";
+    private final String PYTHON_MODEL_URL = "https://marine-debris-ml.onrender.com/detect";
 
     // Base GPS point - real deployment mein ye sonar nav/ping-header file se aayega
     private final double BASE_LAT = 11.0168;
@@ -76,7 +75,6 @@ public class DetectController {
         // 2. Har detection mein lat/lon aur shadow_check_passed add karo
         List<Map<String, Object>> finalDetections = new ArrayList<>();
         String processedAt = java.time.Instant.now().toString();
-        Random random = new Random();
         int detectionIdCounter = 1;
 
         for (Map<String, Object> raw : rawDetections) {
@@ -90,9 +88,8 @@ public class DetectController {
             double lat = BASE_LAT + (yCenter - 0.5) * 0.002;
             double lon = BASE_LON + (xCenter - 0.5) * 0.002;
 
-            // Placeholder shadow/noise filter: abhi sirf confidence threshold use kar rahe hain
-            // Dost ka asli shadow_filter.py milte hi isko replace karna hai
-            boolean shadowCheckPassed = confidence >= 0.5;
+            // Real shadow-check result seedha Python se aa raha hai ab (naya model.zip)
+            boolean shadowCheckPassed = (boolean) raw.get("shadow_check_passed");
 
             Map<String, Object> detection = new HashMap<>();
             detection.put("detection_id", detectionIdCounter++);
@@ -117,11 +114,12 @@ public class DetectController {
             scanResultRepository.save(result);
         }
 
-        // 4. Final response frontend ko bhejo
+        // 4. Final response frontend ko bhejo (real processing time bhi Python se aa raha hai)
         Map<String, Object> response = new HashMap<>();
         response.put("image_id", image.getOriginalFilename());
         response.put("processed_at", processedAt);
         response.put("detections", finalDetections);
+        response.put("processing_time_seconds", pythonResponse.get("processing_time_seconds"));
 
         return response;
     }

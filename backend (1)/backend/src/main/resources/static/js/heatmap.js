@@ -1,4 +1,4 @@
-fetch("http://localhost:8080/reports")
+fetch("/reports")
     .then(response => response.json())
     .then(data => {
         renderStats(data);

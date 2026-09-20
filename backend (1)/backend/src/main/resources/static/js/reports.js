@@ -1,4 +1,4 @@
-fetch("http://localhost:8080/reports")
+fetch("/reports")
     .then(response => response.json())
     .then(data => {
         renderTable(data);
@@ -9,7 +9,7 @@ fetch("http://localhost:8080/reports")
     });
 
 function deleteReport(id, rowElement) {
-    fetch("http://localhost:8080/reports/" + id, {
+    fetch("/reports/" + id, {
         method: "DELETE"
     })
     .then(response => response.json())
@@ -60,7 +60,7 @@ function renderTable(data) {
 }
 
 document.getElementById("downloadCsvBtn").addEventListener("click", function () {
-    fetch("http://localhost:8080/reports")
+    fetch("/reports")
         .then(response => response.json())
         .then(data => downloadAsCsv(data));
 });

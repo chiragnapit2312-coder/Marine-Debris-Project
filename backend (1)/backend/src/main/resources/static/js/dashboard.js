@@ -71,7 +71,7 @@ function updateDetectionSpeed(result) {
 }
 
 // 0. Real historical stats seedha database (backend) se
-fetch("http://localhost:8080/reports")
+fetch("/reports")
     .then(response => response.json())
     .then(data => {
         updateAggregateStats(data);
